@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yield Radar — DeFi token launch radar</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="pulse" aria-hidden="true"></div>
+    <div>
+      <h1>YIELD RADAR</h1>
+      <p class="tag">Which pre-token DeFi yield protocol is worth farming next — and what to do about it.</p>
+    </div>
+  </div>
+  <div class="meta" id="meta"></div>
+</header>
+<main>
+  <section class="card model" id="model" aria-label="Value model"></section>
+  <section class="card detail" id="detail" hidden aria-label="Protocol detail"></section>
+  <section class="controls" aria-label="Filters">
+    <label>Search <input id="q" type="search" placeholder="protocol name or slug" autocomplete="off"></label>
+    <label>Family
+      <select id="family">
+        <option value="">All families</option>
+        <option>Lending</option><option>Yield</option><option>Trading</option>
+        <option>Vaults</option><option>StableRWA</option><option value="__other">Other (watchlist only)</option>
+      </select>
+    </label>
+    <label>Chain
+      <select id="chain"><option value="">All chains</option></select>
+    </label>
+    <label class="check"><input id="watchlist" type="checkbox"> Watchlist only</label>
+    <label>Sort by
+      <select id="sort">
+        <option value="implied">Implied value</option>
+        <option value="tvl">TVL</option>
+        <option value="change">7d change</option>
+        <option value="age">Age (oldest)</option>
+      </select>
+    </label>
+    <span class="count" id="count" role="status"></span>
+  </section>
+  <section class="card" aria-label="Ranked board">
+    <h2>Ranked board <span class="sub" id="board-sub"></span></h2>
+    <div class="tablewrap">
+      <table id="board">
+        <thead><tr>
+          <th data-sort="implied">#</th><th>Protocol</th><th>Family</th><th>Chains</th>
+          <th data-sort="tvl">TVL</th><th data-sort="change">7d</th><th data-sort="age">Age</th>
+          <th data-sort="implied">Implied value</th><th>Fee &times;</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="hint">Click a row for the full detail view and its 5-step farm plan. Rank 1 is the board&rsquo;s most valuable protocol.</p>
+  </section>
+  <section class="card" aria-label="Live token comparables">
+    <h2>Already-live tokens <span class="sub">the market&rsquo;s own prices — not ranked</span></h2>
+    <p class="note">These protocols already trade. Their market-cap-to-TVL ratios are what the fee multiples above are built from; they are comparables, never board rows.</p>
+    <div class="tablewrap">
+      <table id="live">
+        <thead><tr><th>Protocol</th><th>Family</th><th>Chains</th><th>TVL</th><th>Market cap</th><th>MCap / TVL</th><th>7d</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+  <section class="card" aria-label="Method">
+    <h2>How the radar works</h2>
+    <div class="method" id="method"></div>
+    <p class="note">A protocol &ldquo;records no token&rdquo; when the snapshot records none for it — that is DefiLlama&rsquo;s record, not proof it has none. The implied value is this entry&rsquo;s own claim: what a launch would be worth if the protocol&rsquo;s record stayed as it is. It is not a prediction that a token will be issued, or when. Farm plans are a starting point, not financial advice; every step carries its own risk note — read it before you put money in.</p>
+  </section>
+</main>
+<footer>Yield Radar &middot; model yield-quality-1 &middot; snapshot as of <span id="asof"></span> &middot; data: DefiLlama protocols snapshot, frozen for this competition.</footer>
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
